@@ -308,7 +308,7 @@ posthtml([
   })
 ])
   .process(`
-    <shiki theme-light="github-light" theme-dark="github-dark">
+    <shiki>
       [code]
     </shiki>
   `)
