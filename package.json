@@ -12,6 +12,9 @@
   "engines": {
     "node": ">=18.0.0"
   },
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "dev": "vitest",
     "pretest": "eslint lib/*.{js,ts}",
