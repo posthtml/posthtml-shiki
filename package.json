@@ -1,0 +1,42 @@
+{
+  "name": "posthtml-shiki",
+  "description": "PostHTML plugin for highlighting code blocks with Shiki.",
+  "version": "0.0.0",
+  "license": "MIT",
+  "author": "PostHTML (https://github.com/posthtml)",
+  "bugs": "https://github.com/posthtml/posthtml-shiki/issues",
+  "homepage": "https://github.com/posthtml/posthtml-shiki",
+  "repository": "posthtml/posthtml-shiki",
+  "type": "module",
+  "exports": "./lib/index.js",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "dev": "vitest",
+    "pretest": "eslint lib/*.{js,ts}",
+    "release": "np",
+    "test": "vitest run --coverage"
+  },
+  "keywords": [
+    "html",
+    "posthtml",
+    "posthtml-plugin",
+    "shiki",
+    "highlight",
+    "syntax",
+    "code"
+  ],
+  "devDependencies": {
+    "@vitest/coverage-v8": "^1.3.1",
+    "eslint": "^8.57.0",
+    "np": "^10.0.0",
+    "posthtml": "^0.16.5",
+    "vitest": "^1.3.0"
+  },
+  "dependencies": {
+    "posthtml-attrs-parser": "^1.0.1",
+    "posthtml-render": "^3.0.0",
+    "shiki": "^1.1.7"
+  }
+}
