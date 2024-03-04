@@ -1,7 +1,7 @@
 {
   "name": "posthtml-shiki",
   "description": "PostHTML plugin for highlighting code blocks with Shiki.",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "license": "MIT",
   "author": "PostHTML (https://github.com/posthtml)",
   "bugs": "https://github.com/posthtml/posthtml-shiki/issues",
