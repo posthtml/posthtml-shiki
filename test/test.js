@@ -14,49 +14,49 @@ const expected = file => readFileSync(path.join(__dirname, 'expected', `${file}.
 const error = (name, options, cb) => posthtml([plugin(options)]).process(fixture(name)).catch(cb)
 const clean = html => html.replaceAll(/[^\S\r\n]+$/gm, '').trim()
 
-const process = (t, name, options, log = false) => {
+const process = (name, options, log = false) => {
   return posthtml([plugin(options)])
     .process(fixture(name))
     .then(result => log ? console.log(result.html) : clean(result.html))
     .then(html => expect(html).toEqual(expected(name)))
 }
 
-test('basic', t => {
-  return process(t, 'basic')
+test('basic', () => {
+  return process('basic')
 })
 
-test('language attribute', t => {
-  return process(t, 'lang')
+test('language attribute', () => {
+  return process('lang')
 })
 
-test('theme attribute', t => {
-  return process(t, 'theme')
+test('theme attribute', () => {
+  return process('theme')
 })
 
-test('dual themes', t => {
-  return process(t, 'dual-themes')
+test('dual themes', () => {
+  return process('dual-themes')
 })
 
-test('default color (option)', t => {
-  return process(t, 'default-color', {
+test('default color (option)', () => {
+  return process('default-color', {
     defaultColor: 'dark'
   })
 })
 
-test('custom tag', t => {
-  return process(t, 'tag', {tag: 'highlight'})
+test('custom tag', () => {
+  return process('tag', {tag: 'highlight'})
 })
 
-test('wrapping tag (attribute)', t => {
-  return process(t, 'wrap-attribute')
+test('wrapping tag (attribute)', () => {
+  return process('wrap-attribute')
 })
 
-test('wrapping tag (options)', t => {
-  return process(t, 'wrap-options', {wrapTag: 'div'})
+test('wrapping tag (options)', () => {
+  return process('wrap-options', {wrapTag: 'div'})
 })
 
-test('decorations', t => {
-  return process(t, 'decorations', {
+test('decorations', () => {
+  return process('decorations', {
     decorations: [
       {
         // line and character are 0-indexed
@@ -68,8 +68,8 @@ test('decorations', t => {
   })
 })
 
-test('transformers', t => {
-  return process(t, 'transformers', {
+test('transformers', () => {
+  return process('transformers', {
     transformers: [
       {
         code(node) {
@@ -77,5 +77,23 @@ test('transformers', t => {
         },
       }
     ]
+  })
+})
+
+test('custom theme', () => {
+  const myTheme = {
+    name: 'my-theme',
+    settings: [
+      {
+        scope: ['string'],
+        settings: {
+          foreground: '#888'
+        }
+      },
+    ]
+  }
+
+  return process('custom-theme', {
+    themes: [myTheme]
   })
 })
