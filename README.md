@@ -30,7 +30,7 @@ Features:
 - [x] [Decorations](#decorations)
 - [x] [Transformers](#transformers)
 - [x] [Custom themes](#custom-themes)
-- [ ] Custom languages
+- [x] [Custom languages](#custom-languages)
 
 Input:
 
@@ -229,6 +229,31 @@ posthtml([
 ```
 
 See the list of [supported languages](https://shiki.style/languages) in Shiki.
+
+#### Custom Languages
+
+You may also load custom languages by passing a TextMate grammar object to the `langs` option.
+
+```js
+const customDiffLang = JSON.parse(readFileSync('./custom-diff.json', 'utf8'))
+
+posthtml([
+  shiki({
+    langs: [customDiffLang]
+  })
+])
+  .process(`
+    <shiki lang="custom-diff">
+      - FOO
+      + BAR
+    </shiki>
+  `)
+    .then(result => result.html)
+```
+
+You must specify the `lang` attribute with the name of the language, and the value must match the `name` property of the TextMate grammar object.
+
+See [tm-grammars](https://github.com/shikijs/textmate-grammars-themes/tree/main/packages/tm-grammars) for examples.
 
 ### `themes`
 
