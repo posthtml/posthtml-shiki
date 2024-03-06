@@ -97,3 +97,11 @@ test('custom theme', () => {
     themes: [myTheme]
   })
 })
+
+test('custom language', () => {
+  const myLang = JSON.parse(readFileSync('./test/stubs/custom-diff.json', 'utf8'))
+
+  return process('custom-lang', {
+    langs: [myLang]
+  })
+})
