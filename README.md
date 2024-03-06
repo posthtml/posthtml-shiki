@@ -20,15 +20,15 @@ This is a PostHTML plugin that uses [Shiki](https://shiki.style) to highlight co
 
 Features:
 
-- [x] Configure `langs`
-- [x] Configure `themes`
-- [x] Supports `lang` attribute
-- [x] Supports `theme` attribute
-- [x] Supports [Dual Themes](#theme-1)
-- [x] Wrap code block in custom tag
-- [x] Default color theme
-- [x] Decorations
-- [x] Transformers
+- [x] Configure [`langs`](#langs)
+- [x] Configure [`themes`](#themes)
+- [x] [`lang`](#lang) attribute
+- [x] [`theme`](#theme) attribute
+- [x] [Dual Themes](#theme-1)
+- [x] [Wrap in custom tag](#wrap)
+- [x] [Default color theme](#default-color)
+- [x] [Decorations](#decorations)
+- [x] [Transformers](#transformers)
 - [ ] Custom themes
 - [ ] Custom languages
 
