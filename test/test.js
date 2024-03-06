@@ -54,3 +54,16 @@ test('wrapping tag (attribute)', t => {
 test('wrapping tag (options)', t => {
   return process(t, 'wrap-options', {wrapTag: 'div'})
 })
+
+test('decorations', t => {
+  return process(t, 'decorations', {
+    decorations: [
+      {
+        // line and character are 0-indexed
+        start: { line: 1, character: 2 },
+        end: { line: 1, character: 8 },
+        properties: { class: 'highlighted-word' }
+      }
+    ]
+  })
+})

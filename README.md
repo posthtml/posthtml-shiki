@@ -27,6 +27,7 @@ Features:
 - [x] Supports [Dual Themes](#theme-1)
 - [x] Wrap code block in custom tag
 - [x] Default color theme
+- [x] Decorations
 - [ ] Custom themes
 - [ ] Custom languages
 
@@ -314,6 +315,41 @@ posthtml([
   `)
   .then(result => result.html)
 ```
+
+### `decorations`
+
+Type: `array`\
+Default: `[]`
+
+Shiki's [Decorations](https://shiki.style/guide/decorations) are supported through the `decorations` option.
+
+You can use this to wrap custom classes and attributes around character ranges in your code.
+
+```js
+import posthtml from 'posthtml'
+import shiki from 'posthtml-shiki'
+
+posthtml([
+  shiki({
+    decorations: [
+      {
+        // line and character are 0-indexed
+        start: { line: 1, character: 2 },
+        end: { line: 1, character: 7 },
+        properties: { class: 'highlighted-word' }
+      }
+    ]
+  })
+])
+  .process(`
+    <shiki>
+      const foo = 'bar'
+    </shiki>
+  `)
+  .then(result => result.html)
+```
+
+The word `const` will be wrapped in a `<span class="highlighted-word">` tag.
 
 [npm]: https://www.npmjs.com/package/posthtml-shiki
 [npm-version-shield]: https://img.shields.io/npm/v/posthtml-shiki.svg
