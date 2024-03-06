@@ -392,8 +392,8 @@ posthtml([
     decorations: [
       {
         // line and character are 0-indexed
-        start: { line: 1, character: 2 },
-        end: { line: 1, character: 7 },
+        start: { line: 0, character: 0 },
+        end: { line: 0, character: 5 },
         properties: { class: 'highlighted-word' }
       }
     ]
