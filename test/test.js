@@ -60,8 +60,8 @@ test('decorations', () => {
     decorations: [
       {
         // line and character are 0-indexed
-        start: { line: 1, character: 2 },
-        end: { line: 1, character: 8 },
+        start: { line: 0, character: 9 }, // or start: 9
+        end: { line: 0, character: 19 }, // or end: 19
         properties: { class: 'highlighted-word' }
       }
     ]
