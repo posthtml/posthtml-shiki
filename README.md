@@ -29,7 +29,7 @@ Features:
 - [x] [Default color theme](#default-color)
 - [x] [Decorations](#decorations)
 - [x] [Transformers](#transformers)
-- [ ] Custom themes
+- [x] Custom themes
 - [ ] Custom languages
 
 Input:
@@ -255,7 +255,37 @@ posthtml([
     .then(result => result.html)
 ```
 
-See the list of [supported themes](https://shiki.style/themes) in Shiki.
+See the list of [available themes](https://shiki.style/themes) in Shiki.
+
+> [!NOTE]
+> If you don't specify a `theme=""` attribute, the first theme in the `themes` option will be used.
+
+You may also load [custom themes](https://shiki.style/guide/load-theme):
+
+```js
+// Define textmate theme
+const myTheme = {
+  name: 'my-theme',
+  settings: [
+    {
+      scope: ['string'],
+      settings: {
+        foreground: '#888'
+      }
+    },
+  ]
+}
+
+posthtml([
+  shiki({
+    themes: [myTheme],
+  })
+])
+  .process(`<shiki theme="my-theme">[code]</shiki>`)
+  .then(result => result.html)
+```
+
+If you're loading multiple themes, you will need to specify which theme to use with the `theme=""` attribute. For custom themes, the attribute value must match the name of the theme - in the example above, that would be `my-theme`.
 
 ### `wrapTag`
 
