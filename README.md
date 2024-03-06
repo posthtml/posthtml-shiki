@@ -29,7 +29,7 @@ Features:
 - [x] [Default color theme](#default-color)
 - [x] [Decorations](#decorations)
 - [x] [Transformers](#transformers)
-- [x] Custom themes
+- [x] [Custom themes](#custom-themes)
 - [ ] Custom languages
 
 Input:
@@ -232,7 +232,7 @@ See the list of [supported languages](https://shiki.style/languages) in Shiki.
 
 ### `themes`
 
-Type: `string[]`\
+Type: `Array<string> | Array<object>`\
 Default: `['nord']`
 
 Use the `themes` option to specify the themes for Shiki to load.
@@ -260,7 +260,9 @@ See the list of [available themes](https://shiki.style/themes) in Shiki.
 > [!NOTE]
 > If you don't specify a `theme=""` attribute, the first theme in the `themes` option will be used.
 
-You may also load [custom themes](https://shiki.style/guide/load-theme):
+#### Custom Themes
+
+You may also load [custom themes](https://shiki.style/guide/load-theme) by passing a TextMate theme object to the `themes` option:
 
 ```js
 // Define textmate theme
