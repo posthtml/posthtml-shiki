@@ -67,3 +67,15 @@ test('decorations', t => {
     ]
   })
 })
+
+test('transformers', t => {
+  return process(t, 'transformers', {
+    transformers: [
+      {
+        code(node) {
+          this.addClassToHast(node, 'language-js')
+        },
+      }
+    ]
+  })
+})
