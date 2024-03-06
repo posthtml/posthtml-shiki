@@ -28,6 +28,7 @@ Features:
 - [x] Wrap code block in custom tag
 - [x] Default color theme
 - [x] Decorations
+- [x] Transformers
 - [ ] Custom themes
 - [ ] Custom languages
 
@@ -350,6 +351,38 @@ posthtml([
 ```
 
 The word `const` will be wrapped in a `<span class="highlighted-word">` tag.
+
+### `transformers`
+
+Type: `array`\
+Default: `[]`
+
+Use this option to transform the highlighted code block with Shiki's [Transformers](https://shiki.style/guide/transformers).
+
+```js
+import posthtml from 'posthtml'
+import shiki from 'posthtml-shiki'
+
+posthtml([
+  shiki({
+    transformers: [
+      {
+        code(node) {
+          this.addClassToHast(node, 'language-js')
+        },
+      }
+    ]
+  })
+])
+  .process(`
+    <shiki>
+      const foo = 'bar'
+    </shiki>
+  `)
+  .then(result => result.html)
+```
+
+The generated `<code>` tag will have the `language-js` class added.
 
 [npm]: https://www.npmjs.com/package/posthtml-shiki
 [npm-version-shield]: https://img.shields.io/npm/v/posthtml-shiki.svg
