@@ -20,7 +20,7 @@ const plugin = (options = {}) => (tree) => {
     let promise;
     if (node.tag === options.tag && node.content) {
       const attrs = parseAttrs__default(node.attrs);
-      let highlighterOptions = {};
+      const highlighterOptions = {};
       if (attrs.theme) {
         if (options.themes.some((theme) => theme.name !== attrs.theme)) {
           options.themes = [attrs.theme, ...options.themes];
@@ -31,15 +31,15 @@ const plugin = (options = {}) => (tree) => {
         if (themes.length > 0) {
           options.themes = [];
           highlighterOptions.themes = {};
-          themes.forEach(([key, value]) => {
+          for (const [key, value] of themes) {
             options.themes.push(value);
             highlighterOptions.themes[key.replace("theme-", "")] = value;
-          });
+          }
         } else {
           highlighterOptions.theme = options.themes[0];
         }
       }
-      promise = shiki.getHighlighter({
+      promise = shiki.createHighlighter({
         langs: options.langs,
         themes: options.themes
       }).then((highlighter) => {
@@ -61,6 +61,7 @@ const plugin = (options = {}) => (tree) => {
         node.attrs = {};
         node.tag = wrapTag;
         node.content = highlighter.codeToHtml(source, highlighterOptions);
+        highlighter.dispose();
       });
       promises.push(promise);
     }

@@ -1,4 +1,4 @@
-import { getHighlighter } from 'shiki';
+import { createHighlighter } from 'shiki';
 import { render } from 'posthtml-render';
 import parseAttrs from 'posthtml-attrs-parser';
 
@@ -14,7 +14,7 @@ const plugin = (options = {}) => (tree) => {
     let promise;
     if (node.tag === options.tag && node.content) {
       const attrs = parseAttrs(node.attrs);
-      let highlighterOptions = {};
+      const highlighterOptions = {};
       if (attrs.theme) {
         if (options.themes.some((theme) => theme.name !== attrs.theme)) {
           options.themes = [attrs.theme, ...options.themes];
@@ -25,15 +25,15 @@ const plugin = (options = {}) => (tree) => {
         if (themes.length > 0) {
           options.themes = [];
           highlighterOptions.themes = {};
-          themes.forEach(([key, value]) => {
+          for (const [key, value] of themes) {
             options.themes.push(value);
             highlighterOptions.themes[key.replace("theme-", "")] = value;
-          });
+          }
         } else {
           highlighterOptions.theme = options.themes[0];
         }
       }
-      promise = getHighlighter({
+      promise = createHighlighter({
         langs: options.langs,
         themes: options.themes
       }).then((highlighter) => {
@@ -55,6 +55,7 @@ const plugin = (options = {}) => (tree) => {
         node.attrs = {};
         node.tag = wrapTag;
         node.content = highlighter.codeToHtml(source, highlighterOptions);
+        highlighter.dispose();
       });
       promises.push(promise);
     }
