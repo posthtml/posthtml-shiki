@@ -24,8 +24,8 @@
   ],
   "scripts": {
     "dev": "vitest",
-    "release": "np",
     "build": "unbuild",
+    "release": "npx np",
     "prepack": "unbuild",
     "pretest": "npm run lint",
     "lint": "biome lint ./lib ./test",
@@ -43,7 +43,6 @@
   "devDependencies": {
     "@biomejs/biome": "1.8.3",
     "@vitest/coverage-v8": "^2.0.1",
-    "np": "*",
     "posthtml": "^0.16.6",
     "unbuild": "^2.0.0",
     "vitest": "^2.0.1"
