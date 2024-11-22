@@ -419,27 +419,30 @@ Use this option to transform the highlighted code block with Shiki's [Transforme
 ```js
 import posthtml from 'posthtml'
 import shiki from 'posthtml-shiki'
+import { transformerNotationHighlight } from '@shikijs/transformers'
 
 posthtml([
   shiki({
     transformers: [
+      transformerNotationHighlight(),
       {
         code(node) {
-          this.addClassToHast(node, 'language-js')
+          this.addClassToHast(node, 'custom-class')
         },
-      }
+      },
     ]
   })
 ])
   .process(`
     <shiki>
       const foo = 'bar'
+      let baz = 'biz' // [!code highlight]
     </shiki>
   `)
   .then(result => result.html)
 ```
 
-The generated `<code>` tag will have the `language-js` class added.
+See the docs for [Shiki Transformers](https://shiki.style/guide/transformers) and a list of [common Shiki Transformers](https://shiki.style/packages/transformers).
 
 [npm]: https://www.npmjs.com/package/posthtml-shiki
 [npm-version-shield]: https://img.shields.io/npm/v/posthtml-shiki.svg
