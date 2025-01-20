@@ -50,6 +50,6 @@
   "dependencies": {
     "posthtml-attrs-parser": "^1.1.0",
     "posthtml-render": "^3.0.0",
-    "shiki": "^1.10.0"
+    "shiki": "^2.0.3"
   }
 }
