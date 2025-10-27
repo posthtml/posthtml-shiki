@@ -45,7 +45,7 @@
     "@vitest/coverage-v8": "^3.0.4",
     "posthtml": "^0.16.6",
     "unbuild": "^2.0.0",
-    "vitest": "^3.0.4"
+    "vitest": "^4.0.4"
   },
   "dependencies": {
     "posthtml-attrs-parser": "^1.1.0",
